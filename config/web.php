@@ -6,8 +6,9 @@ use yii\twig\ViewRenderer;
 use yii\web\View;
 
 $params = require __DIR__ . '/params.php';
-$db     = require __DIR__ . '/db.php';
-$mail   = require __DIR__ . '/mail.php';
+$db = require __DIR__ . '/db.php';
+$mail = require __DIR__ . '/mail.php';
+$aliases = require __DIR__ . '/aliases.php';
 
 $config = [
     'id' => 'Yii2 Foundation',
@@ -17,10 +18,7 @@ $config = [
     'timeZone' => 'Europe/Zurich',
     'layout' => 'main.twig',
 
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-    ],
+    'aliases' => $aliases,
     'components' => [
 		'view' => [
 			'class' => View::class,
@@ -57,13 +55,21 @@ $config = [
         ],
         'mailer' => $mail,
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => 3,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => []
                 ],
+	            [
+		            'class' => 'yii\log\FileTarget',
+		            'levels' => ['trace'],
+		            'logVars' => [],
+
+		            'categories' => ['project'],
+		            'logFile' => '@runtime/logs/project.log'
+	            ]
             ],
         ],
         'db' => $db,

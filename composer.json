@@ -13,7 +13,9 @@
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
         "yiisoft/yii2-symfonymailer": "~2.0.3",
-        "yiisoft/yii2-twig": "^2.4"
+        "yiisoft/yii2-twig": "^2.4",
+        "yii2mod/yii2-enum": "^1.7",
+        "nesbot/carbon": "^2.62"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -67,5 +69,9 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
+
+    "autoload": {
+        "files": ["helpers/helpers.php"]
+    }
 }

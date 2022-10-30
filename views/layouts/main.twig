@@ -1,10 +1,11 @@
+{{ register_asset_bundle('app/assets/AppAssets') }}
+
 {{ this.beginPage() }}
 <!doctype html>
 <html lang="{{ app.language }}">
     <head>
         <meta charset="{{ app.charset }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>{{ Html.encode(this.title) }}</title>
         {{ this.head }}
     </head>
